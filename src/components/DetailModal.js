@@ -1,19 +1,29 @@
 // src/components/DetailModal.jsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { X, Phone } from "lucide-react";
+import { X, Phone, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { ASSETS } from "@/data/assets";
 
 export const DetailModal = ({ item, onClose }) => {
+  const [quantity, setQuantity] = useState(1);
+
   if (!item) return null;
+
+  const handleQuantityChange = (type) => {
+    if (type === "increase") {
+      setQuantity(prev => prev + 1);
+    } else if (type === "decrease" && quantity > 1) {
+      setQuantity(prev => prev - 1);
+    }
+  };
 
   const whatsappLink = `https://wa.me/${
     ASSETS.contact.whatsappNumber
   }?text=${encodeURIComponent(
-    `Halo Raos Saji, saya tertarik untuk memesan ${item.name}.`
+    `Halo Raos Saji, saya ingin order ${item.name} sebanyak ${quantity} porsi.`
   )}`;
 
   return (
@@ -58,6 +68,31 @@ export const DetailModal = ({ item, onClose }) => {
           <p className="text-gray-600 mt-4 leading-relaxed">
             {item.description}
           </p>
+
+          {/* Quantity Selector */}
+          <div className="mt-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Jumlah Pesanan
+            </label>
+            <div className="flex items-center justify-center space-x-4">
+              <button
+                onClick={() => handleQuantityChange("decrease")}
+                disabled={quantity <= 1}
+                className="bg-gray-200 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 rounded-full p-2 transition-colors"
+              >
+                <Minus className="w-4 h-4" />
+              </button>
+              <span className="text-2xl font-bold text-[#8B4513] min-w-[3rem] text-center">
+                {quantity}
+              </span>
+              <button
+                onClick={() => handleQuantityChange("increase")}
+                className="bg-[#8B4513] hover:bg-[#A0522D] text-white rounded-full p-2 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
 
           <a
             href={whatsappLink}

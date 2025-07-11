@@ -45,7 +45,7 @@ export const ASSETS = {
           price: "Rp 25.000",
           imageSrc: "/menu-baci-geprek.jpg",
           description:
-            "Tantang dirimu dengan baso aci level baru! Kenyalnya baso aci dan baso sapi bertemu dengan sayap ayam empuk, disiram sambal geprek pedas yang nendang. Lengkap dengan cuanki, siomay, dan pilus kencur.",
+            "Kenyalnya baso aci dan baso sapi bertemu dengan sayap ayam empuk, disiram sambal geprek pedas yang nendang. Lengkap dengan cuanki, siomay, dan pilus kencur.",
         },
       ],
     },
