@@ -43,30 +43,37 @@ export const HeroSection = () => {
       >
         <div className="relative h-56 md:h-80 flex justify-center items-end">
           {/* Panggung */}
-          <div className="absolute bottom-0 h-24 w-4/5 md:w-1/2 bg-[#D35400] rounded-t-full shadow-2xl"></div>
+          <div className="absolute bottom-0 h-40 w-4/5 md:w-1/2 bg-[#D35400] rounded-t-full shadow-2xl"></div>
 
           {/* Gambar Produk */}
           {ASSETS.heroProducts.map((product, index) => {
-            // ** LOGIKA POSISI DAN ROTASI YANG DIPERBAIKI **
+            // ** LOGIKA POSISI KARTU REMI **
             let styles = {};
+
             if (index === 0) {
-              // Produk Kiri
-              styles = { left: "25%", bottom: "20%", rotate: -15, zIndex: 2 };
-            } else if (index === 1) {
-              // Produk Tengah
+              // Kartu Kiri
               styles = {
                 left: "50%",
-                bottom: "35%",
+                bottom: "20%",
+                x: "-90%",
+                rotate: -15,
+                zIndex: 2,
+              };
+            } else if (index === 1) {
+              // Kartu Tengah (Paling Atas)
+              styles = {
+                left: "50%",
+                bottom: "25%",
                 x: "-50%",
                 rotate: 0,
                 zIndex: 3,
               };
             } else {
-              // Produk Kanan
+              // Kartu Kanan
               styles = {
-                left: "75%",
+                left: "50%",
                 bottom: "20%",
-                x: "-100%",
+                x: "-10%",
                 rotate: 15,
                 zIndex: 2,
               };
@@ -75,7 +82,8 @@ export const HeroSection = () => {
             return (
               <motion.div
                 key={product.id}
-                className="absolute"
+                // PERUBAHAN: Menambahkan ukuran responsif
+                className="absolute w-[160px] h-[160px] md:w-[220px] md:h-[220px]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{
                   opacity: 1,
@@ -93,18 +101,16 @@ export const HeroSection = () => {
                   left: styles.left,
                   bottom: styles.bottom,
                   zIndex: styles.zIndex,
-                  width: "150px",
-                  height: "150px",
                 }}
               >
                 <Image
                   src={product.src}
                   alt={product.alt}
-                  width={150}
-                  height={150}
+                  width={220} // Menggunakan ukuran terbesar untuk kualitas
+                  height={220}
                   className="shadow-lg rounded-lg object-contain"
                   onError={(e) => {
-                    e.currentTarget.src = `https://placehold.co/150x150/E29A5E/FFFFFF?text=Produk+${
+                    e.currentTarget.src = `https://placehold.co/220x220/E29A5E/FFFFFF?text=Produk+${
                       index + 1
                     }`;
                   }}
