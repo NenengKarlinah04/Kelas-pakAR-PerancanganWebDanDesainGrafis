@@ -1,7 +1,7 @@
 // src/data/assets.js
 
 export const ASSETS = {
-  logo: "/menu-baci-geprek.jpg",
+  logo: "/logo.jpg",
   heroProducts: [
     { id: 1, src: "/menu-baci-geprek.jpg", alt: "Gambar Produk Unggulan 1" },
     { id: 2, src: "/menu-keju-aroma.jpg", alt: "Gambar Produk Unggulan 2" },
@@ -88,8 +88,7 @@ export const ASSETS = {
   ],
   contact: {
     tagline: "Rasa Asli dalam Setiap Sajian",
-    whatsappNumber: "6281234567890",
-    instagramUsername: "raossaji.id",
-    marketplaceLink: "#",
+    whatsappNumber: "6285810091213",
+    instagramUsername: "raos_saji",
   },
 };
