@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { X, Phone, Plus, Minus } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import { ASSETS } from "@/data/assets";
 
 export const DetailModal = ({ item, onClose }) => {
@@ -14,9 +14,9 @@ export const DetailModal = ({ item, onClose }) => {
 
   const handleQuantityChange = (type) => {
     if (type === "increase") {
-      setQuantity(prev => prev + 1);
+      setQuantity((prev) => prev + 1);
     } else if (type === "decrease" && quantity > 1) {
-      setQuantity(prev => prev - 1);
+      setQuantity((prev) => prev - 1);
     }
   };
 
@@ -40,17 +40,16 @@ export const DetailModal = ({ item, onClose }) => {
         className="bg-white rounded-2xl w-full max-w-lg overflow-hidden"
       >
         <div className="relative">
-          <Image
+          <img
             src={item.imageSrc}
             alt={item.name}
             width={500}
             height={300}
             className="w-full h-72 object-cover"
             onError={(e) => {
-              e.currentTarget.src = `https://placehold.co/500x300/F5CBA7/8B4513?text=${item.name.replace(
-                /\s/g,
-                "+"
-              )}`;
+              e.currentTarget.src = `https://placehold.co/500x300/F5CBA7/8B4513?text=${item.name
+                .replace(/\s/g, "+")
+                .replace(/"/g, "&quot;")}`;
             }}
           />
           <button

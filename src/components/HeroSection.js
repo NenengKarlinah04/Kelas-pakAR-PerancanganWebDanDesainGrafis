@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { motion } from "framer-motion";
 import { ASSETS } from "@/data/assets";
 
@@ -82,7 +82,6 @@ export const HeroSection = () => {
             return (
               <motion.div
                 key={product.id}
-                // PERUBAHAN: Menambahkan ukuran responsif
                 className="absolute w-[160px] h-[160px] md:w-[220px] md:h-[220px]"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{
@@ -103,16 +102,14 @@ export const HeroSection = () => {
                   zIndex: styles.zIndex,
                 }}
               >
-                <Image
+                <img
                   src={product.src}
                   alt={product.alt}
-                  width={220} // Menggunakan ukuran terbesar untuk kualitas
+                  width={220}
                   height={220}
-                  className="shadow-lg rounded-lg object-contain"
+                  className="w-full h-full object-cover rounded-xl shadow-lg"
                   onError={(e) => {
-                    e.currentTarget.src = `https://placehold.co/220x220/E29A5E/FFFFFF?text=Produk+${
-                      index + 1
-                    }`;
+                    e.currentTarget.src = `https://placehold.co/220x220/F5CBA7/8B4513?text=${product.alt.replace(/\s/g,'+')}`;
                   }}
                 />
               </motion.div>

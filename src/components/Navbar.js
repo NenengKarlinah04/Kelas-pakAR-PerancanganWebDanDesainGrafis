@@ -2,7 +2,7 @@
 "use client"; // Komponen ini interaktif, jadi kita tandai sebagai Client Component
 
 import React from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { ASSETS } from "@/data/assets"; // Mengambil data aset
 
 export const Navbar = () => {
@@ -17,16 +17,15 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md shadow-sm">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         {/* Logo */}
-        <Image
+        <img
           src={ASSETS.logo}
           alt="Logo Raos Saji"
           width={100}
           height={40}
           className="h-12 w-auto"
-          // Tambahkan fallback jika gambar tidak ditemukan
           onError={(e) => {
             e.currentTarget.src =
-              "[https://placehold.co/100x40/FFF/E29A5E?text=RAOS+SAJI&font=poppins](https://placehold.co/100x40/FFF/E29A5E?text=RAOS+SAJI&font=poppins)";
+              "https://placehold.co/100x40/FFF/E29A5E?text=RAOS+SAJI&font=poppins";
           }}
         />
 
